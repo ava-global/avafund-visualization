@@ -1,0 +1,315 @@
+/* General */
+:root {
+  /* Color */
+  --c-black: #030303;
+  --c-white: #fcfcfc;
+  --c-pale-grey: #f4f4f4;
+  --c-bright-grey: #e0e0e0;
+  --c-light-grey: #ccc6c6;
+  --c-grey: #9a9a9a;
+  --c-dark-grey: #909090;
+  --c-primary-green: #23c4a4;
+  --c-green: #59b5a3;
+  --c-light-green: #c7e5e0;
+  --c-bright-green: #bcede4;
+  --c-pale-green: #dff4f0;
+  --c-primary-blue: #3da0d5;
+  --c-primary-red: #fc0000;
+  --c-red: #ff7777;
+  --c-light-red: #ffaeae;
+  --c-bright-red: #ffc7c7;
+  --c-pale-red: #ffd9da;
+
+  /* Typography */
+  --fs-8: 8px;
+  --fs-10: 10px;
+  --fs-14: 14px;
+  --fs-22: 22px;
+
+  --fw-med: 500;
+  --fw-bol: 700;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: "Sukhumvit Tadmai", sans-serif;
+  font-size: var(--fs-10);
+  font-weight: var(--fw-med);
+  color: var(--c-black);
+  background-color: var(--c-white);
+  overflow: hidden;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
+/* Layout */
+.cashflow-grid {
+  display: grid;
+  grid-template:
+    "toolbar      toolbar toolbar     " 48px
+    "chart-header divider times-header" 48px
+    "chart-body   divider times-body  " calc(100vh - 96px) /
+    auto 0.5px 1fr;
+  --mr: 20px;
+  --mb: 16px;
+  --ml: 50px;
+}
+
+.toolbar-area {
+  grid-area: toolbar;
+  padding-left: var(--ml);
+  padding-right: var(--mr);
+}
+
+.chart-header-area {
+  grid-area: chart-header;
+  padding-left: var(--ml);
+  line-height: 48px;
+}
+
+.times-header-area {
+  grid-area: times-header;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  margin-right: var(--mr);
+}
+
+.chart-body-area {
+  grid-area: chart-body;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  padding-left: var(--ml);
+  margin-bottom: var(--mb);
+}
+
+.times-body-area {
+  grid-area: times-body;
+  overflow: auto;
+  overscroll-behavior: contain;
+  margin-right: var(--mr);
+  margin-bottom: var(--mb);
+}
+
+.chart-times-divider {
+  grid-area: divider;
+  width: 100%;
+  height: calc(100% - 16px - var(--mb));
+  margin-top: 16px;
+  margin-bottom: var(--mb);
+  background-color: var(--c-light-grey);
+}
+
+/* Chart header */
+.name-text {
+  font-weight: var(--fw-med);
+  font-size: var(--fs-22);
+  color: var(--c-black);
+}
+
+.description-text {
+  font-weight: var(--fw-med);
+  font-size: var(--fs-14);
+  color: var(--c-grey);
+}
+
+/* Times header */
+.times-header-svg {
+  display: block;
+  height: 100%;
+  overflow: visible;
+}
+
+.time-box {
+  cursor: pointer;
+}
+
+.time-box .time-box__rect {
+  stroke-width: 0.5;
+  stroke: var(--c-light-grey);
+  fill: var(--c-white);
+}
+
+.time-box .time-box__text {
+  font-size: var(--fs-14);
+  font-weight: var(--fw-med);
+  fill: var(--c-light-grey);
+}
+
+.time-box.is-active .time-box__rect {
+  stroke: var(--c-black);
+  fill: var(--c-black);
+}
+
+.time-box.is-active .time-box__text {
+  fill: var(--c-white);
+}
+
+/* Chart body */
+.chart-body-svg {
+  display: block;
+  overflow: visible;
+}
+
+.background-rect {
+  stroke: var(--c-white);
+  fill: var(--c-white);
+}
+
+.background-rect.is-sub-category {
+  stroke: var(--c-pale-grey);
+  fill: var(--c-pale-grey);
+}
+
+.chart-item,
+.chart-value {
+  font-size: var(--fs-10);
+  font-weight: var(--fw-med);
+  fill: var(--c-light-grey);
+}
+
+.chart-item.is-positive,
+.chart-value.is-positive {
+  fill: var(--c-green);
+}
+
+.chart-item.is-negative,
+.chart-value.is-negative {
+  fill: var(--c-red);
+}
+
+.chart-item.is-summary,
+.chart-value.is-summary {
+  fill: var(--c-dark-grey);
+}
+
+.chart-item.is-net-income.is-positive,
+.chart-value.is-net-income.is-positive {
+  fill: var(--c-primary-green);
+}
+
+.chart-item.is-net-income.is-negative,
+.chart-value.is-net-income.is-negative {
+  fill: var(--c-primary-red);
+}
+
+.chart-item.is-collapsible {
+  cursor: pointer;
+}
+
+.chart-item .chart-item-icon {
+  font-size: var(--fs-14);
+}
+
+.chart-item .chart-item-icon.dot-icon {
+  font-weight: var(--fw-bol);
+}
+
+.chart-value.is-net-income {
+  font-size: var(--fs-14);
+  font-weight: var(--fw-bol);
+}
+
+.axis line,
+.axis path {
+  stroke: var(--c-grey);
+}
+
+.axis-background line {
+  stroke: var(--c-light-grey);
+}
+
+.axis text {
+  font-family: "Sukhumvit Tadmai", sans-serif;
+  font-size: var(--fs-8);
+  font-weight: var(--fw-med);
+  fill: var(--c-grey);
+}
+
+#arrow-marker-positive {
+  fill: var(--c-green);
+}
+
+#arrow-marker-negative {
+  fill: var(--c-red);
+}
+
+.waterfall-arrow {
+  stroke: var(--c-grey);
+}
+
+.waterfall-arrow.is-positive {
+  stroke: var(--c-green);
+}
+
+.waterfall-arrow.is-negative {
+  stroke: var(--c-red);
+}
+
+.waterfall-rect {
+  fill: var(--c-light-grey);
+}
+
+.waterfall-rect.is-net-income.is-positive {
+  fill: var(--c-primary-green);
+}
+
+.waterfall-rect.is-net-income.is-negative {
+  fill: var(--c-primary-red);
+}
+
+.waterfall-link {
+  stroke: var(--c-black);
+  stroke-dasharray: 1 3;
+}
+
+.waterfall-link.is-secondary {
+  stroke: var(--c-light-grey);
+}
+
+.waterfall-link.is-net-income.is-positive {
+  stroke: var(--c-primary-green);
+}
+
+.waterfall-link.is-net-income.is-negative {
+  stroke: var(--c-primary-red);
+}
+
+/* Times body */
+.times-body-svg {
+  display: flex;
+}
+
+.time-body .value-text {
+  font-size: var(--fs-10);
+  font-weight: var(--fw-med);
+  fill: var(--c-grey);
+}
+
+.time-body.is-active .value-text {
+  fill: var(--c-black);
+}
+
+.time-body .value-text.is-net-income {
+  font-size: var(--fs-14);
+  font-weight: var(--fw-bol);
+}
+
+.time-body .growth-text {
+  font-size: var(--fs-8);
+  font-weight: var(--fw-med);
+  fill: var(--c-primary-blue);
+}
+
+.time-body .growth-text.is-positive {
+  fill: var(--c-green);
+}
+
+.time-body .growth-text.is-negative {
+  fill: var(--c-red);
+}

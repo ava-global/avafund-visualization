@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AVA FUND</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/fonts.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div id="cashflow-grid" class="cashflow-grid">
+      <div
+        class="toolbar-area"
+        style="
+          background-color: var(--c-green);
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        "
+      >
+        <div>
+          <input type="checkbox" id="data-type" checked />
+          <label for="data-type">Annual</label>
+        </div>
+        <div>
+          <input type="checkbox" id="chart-type" checked disabled />
+          <label for="chart-type">Waterfall</label>
+        </div>
+        <div>
+          <input type="checkbox" id="legend-visibility" disabled />
+          <label for="legend-visibility">Legend</label>
+        </div>
+        <div>
+          <input type="checkbox" id="growth-visibility" />
+          <label for="growth-visibility">Growth</label>
+        </div>
+      </div>
+      <div class="chart-header-area">
+        <span class="name-text"></span>&nbsp;
+        <span class="description-text"></span>
+      </div>
+      <div class="times-header-area">
+        <svg class="times-header-svg"></svg>
+      </div>
+      <div class="chart-body-area">
+        <svg class="chart-body-svg"></svg>
+      </div>
+      <div class="times-body-area">
+        <svg class="times-body-svg"></svg>
+      </div>
+      <div class="chart-times-divider"></div>
+    </div>
+    <!-- JS -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="js/constants.js"></script>
+    <script src="js/sync-scroll.js"></script>
+    <script src="js/cashflow-hierarchy.js"></script>
+    <script src="js/cashflow-items.js"></script>
+    <script src="js/cashflow-waterfall.js"></script>
+    <script src="js/cashflow-values.js"></script>
+    <script src="js/cashflow-times-header.js"></script>
+    <script src="js/cashflow-times-body.js"></script>
+    <script src="js/cashflow-chart-body.js"></script>
+    <script src="js/cashflow-grid.js"></script>
+    <script src="js/index.js"></script>
+  </body>
+</html>
