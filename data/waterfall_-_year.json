@@ -175,14 +175,14 @@
           "id": 6,
           "parentId": null,
           "name": "Net Interest Exp.",
-          "value": 62850,
+          "value": -62850,
           "type": "plus"
         },
         {
           "id": 7,
           "parentId": 6,
           "name": "Interest Exp.",
-          "value": 10120,
+          "value": -10120,
           "type": "minus"
         },
         {
