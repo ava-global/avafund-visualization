@@ -624,7 +624,7 @@
           "id": 14,
           "parentId": null,
           "name": "EBT Excl. Unusual Items",
-          "value": 99,
+          "value": 36747,
           "type": "summary"
         },
         {
@@ -638,21 +638,21 @@
           "id": 16,
           "parentId": null,
           "name": "EBT Incl. Unusual Items",
-          "value": 74091,
+          "value": 36829,
           "type": "summary"
         },
         {
           "id": 17,
           "parentId": null,
           "name": "Income Tax Expense",
-          "value": 24091,
+          "value": 6829,
           "type": "minus"
         },
         {
           "id": 18,
           "parentId": null,
           "name": "Net Income",
-          "value": 50000,
+          "value": 30000,
           "type": "end"
         }
       ]
