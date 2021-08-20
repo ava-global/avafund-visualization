@@ -147,14 +147,14 @@
           "id": 2,
           "parentId": null,
           "name": "Cost of Goods Sold",
-          "value": 169559,
+          "value": 432100,
           "type": "minus"
         },
         {
           "id": 3,
           "parentId": null,
           "name": "Gross Profit",
-          "value": 104956,
+          "value": -157585,
           "type": "summary"
         },
         {
