@@ -444,14 +444,14 @@
           "id": 7,
           "parentId": 6,
           "name": "Interest Exp.",
-          "value": 10120,
+          "value": 110120,
           "type": "minus"
         },
         {
           "id": 8,
           "parentId": 6,
           "name": "Interest and Invest. Income",
-          "value": 72970,
+          "value": 172970,
           "type": "plus"
         },
         {
