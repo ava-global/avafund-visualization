@@ -645,14 +645,14 @@
           "id": 17,
           "parentId": null,
           "name": "Income Tax Expense",
-          "value": 110981,
+          "value": 24091,
           "type": "minus"
         },
         {
           "id": 18,
           "parentId": null,
           "name": "Net Income",
-          "value": 1000000,
+          "value": 50000,
           "type": "end"
         }
       ]
