@@ -617,42 +617,42 @@
           "id": 13,
           "parentId": null,
           "name": "Other Non-Operating Inc. (Exp)",
-          "value": 773,
+          "value": 11567,
           "type": "minus"
         },
         {
           "id": 14,
           "parentId": null,
           "name": "EBT Excl. Unusual Items",
-          "value": 36747,
+          "value": 80000,
           "type": "summary"
         },
         {
           "id": 15,
           "parentId": null,
           "name": "Gain (Loss) On sale Of Invest.",
-          "value": 82,
+          "value": 10000,
           "type": "plus"
         },
         {
           "id": 16,
           "parentId": null,
           "name": "EBT Incl. Unusual Items",
-          "value": 36829,
+          "value": 90000,
           "type": "summary"
         },
         {
           "id": 17,
           "parentId": null,
           "name": "Income Tax Expense",
-          "value": 6829,
+          "value": 30000,
           "type": "minus"
         },
         {
           "id": 18,
           "parentId": null,
           "name": "Net Income",
-          "value": 30000,
+          "value": 60000,
           "type": "end"
         }
       ]
