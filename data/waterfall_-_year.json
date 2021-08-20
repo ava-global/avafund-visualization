@@ -603,7 +603,7 @@
           "id": 11,
           "parentId": 8,
           "name": "A3",
-          "value": 76030,
+          "value": 90915,
           "type": "minus"
         },
         {
@@ -624,7 +624,7 @@
           "id": 14,
           "parentId": null,
           "name": "EBT Excl. Unusual Items",
-          "value": 74009,
+          "value": 99,
           "type": "summary"
         },
         {
