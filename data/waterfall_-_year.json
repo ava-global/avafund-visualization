@@ -271,42 +271,42 @@
           "id": 1,
           "parentId": null,
           "name": "Revenue",
-          "value": 274515,
+          "value": 50,
           "type": "plus"
         },
         {
           "id": 2,
           "parentId": null,
           "name": "Cost of Goods Sold",
-          "value": 169559,
+          "value": 10,
           "type": "minus"
         },
         {
           "id": 3,
           "parentId": null,
           "name": "Gross Profit",
-          "value": 104956,
+          "value": 40,
           "type": "summary"
         },
         {
           "id": 4,
           "parentId": null,
           "name": "Other Operating Exp., Total",
-          "value": 140376,
+          "value": 5,
           "type": "minus"
         },
         {
           "id": 5,
           "parentId": null,
           "name": "Operating Income",
-          "value": -35420,
+          "value": 35,
           "type": "summary"
         },
         {
           "id": 6,
           "parentId": null,
           "name": "Net Interest Exp.",
-          "value": 62850,
+          "value": 3,
           "type": "plus"
         },
         {
@@ -348,49 +348,49 @@
           "id": 12,
           "parentId": null,
           "name": "Currency Exchange Gains (Loss)",
-          "value": 37480,
+          "value": 4,
           "type": "plus"
         },
         {
           "id": 13,
           "parentId": null,
           "name": "Other Non-Operating Inc. (Exp)",
-          "value": 773,
+          "value": 1,
           "type": "minus"
         },
         {
           "id": 14,
           "parentId": null,
           "name": "EBT Excl. Unusual Items",
-          "value": 74009,
+          "value": 41,
           "type": "summary"
         },
         {
           "id": 15,
           "parentId": null,
           "name": "Gain (Loss) On sale Of Invest.",
-          "value": 82,
+          "value": 3,
           "type": "plus"
         },
         {
           "id": 16,
           "parentId": null,
           "name": "EBT Incl. Unusual Items",
-          "value": 74091,
+          "value": 44,
           "type": "summary"
         },
         {
           "id": 17,
           "parentId": null,
           "name": "Income Tax Expense",
-          "value": 110981,
+          "value": 14,
           "type": "minus"
         },
         {
           "id": 18,
           "parentId": null,
           "name": "Net Income",
-          "value": -38890,
+          "value": 30,
           "type": "end"
         }
       ]
@@ -671,7 +671,7 @@
           "id": 2,
           "parentId": null,
           "name": "Cost of Goods Sold",
-          "value": 169559,
+          "value": 0,
           "type": "minus"
         },
         {
