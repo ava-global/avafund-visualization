@@ -668,6 +668,13 @@
           "type": "plus"
         },
         {
+          "id": 2,
+          "parentId": null,
+          "name": "Cost of Goods Sold",
+          "value": null,
+          "type": "minus"
+        },
+        {
           "id": 3,
           "parentId": null,
           "name": "Gross Profit",
