@@ -25,5 +25,29 @@ const DIMS = {
 
 const FORMAT = {
   VALUE: (d) => (d === null ? "-" : d3.format(",")(d)),
+  SIGNED_VALUE: (d) => (d === null ? "-" : d3.format("+,")(d)),
   GROWTH: (d) => (d === null ? "" : d3.format("+.1~%")(d)),
+};
+
+const CLASSED = {
+  IS_POSITIVE: (d) => {
+    if (d.type === "end") {
+      return d.value >= 0;
+    } else if (d.type === "plus") {
+      return d.value >= 0;
+    } else if (d.type === "minus") {
+      return d.value <= 0;
+    }
+  },
+  IS_NEGATIVE: (d) => {
+    if (d.type === "end") {
+      return d.value < 0;
+    } else if (d.type === "plus") {
+      return d.value < 0;
+    } else if (d.type === "minus") {
+      return d.value > 0;
+    }
+  },
+  IS_SUMMARY: (d) => d.type === "summary",
+  IS_NET_INCOME: (d) => d.type === "end",
 };

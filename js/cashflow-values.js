@@ -25,14 +25,8 @@ class CashflowValues {
             .attr("class", "chart-value")
             .attr("text-anchor", "end")
             .attr("dy", "0.32em")
-            .classed("is-summary", (d) => d.type === "summary")
-            .classed("is-positive", (d) =>
-              d.type === "end" ? d.value > 0 : d.type === "plus"
-            )
-            .classed("is-negative", (d) =>
-              d.type === "end" ? d.value < 0 : d.type === "minus"
-            )
-            .classed("is-net-income", (d) => d.type === "end")
+            .classed("is-summary", CLASSED.IS_SUMMARY)
+            .classed("is-net-income", CLASSED.IS_NET_INCOME)
             .attr("transform", (d, i) => `translate(0,${this.y(d, i)})`)
             .attr("fill-opacity", 0),
         (update) => update,
@@ -41,7 +35,11 @@ class CashflowValues {
             exit.transition(t).attr("fill-opacity", 0).remove()
           )
       )
-      .text((d) => FORMAT.VALUE(d.value))
+      .classed("is-positive", CLASSED.IS_POSITIVE)
+      .classed("is-negative", CLASSED.IS_NEGATIVE)
+      .text((d) =>
+        d.type === "end" ? FORMAT.SIGNED_VALUE(d.value) : FORMAT.VALUE(d.value)
+      )
       .transition(t)
       .attr("fill-opacity", 1)
       .attr("transform", (d, i) => `translate(0,${this.y(d, i)})`);

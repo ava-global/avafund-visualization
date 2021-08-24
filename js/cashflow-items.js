@@ -26,14 +26,8 @@ class CashFlowItems {
             .attr("class", "chart-item")
             .attr("dy", "0.32em")
             .classed("is-collapsible", (d) => !!d.descendants)
-            .classed("is-summary", (d) => d.type === "summary")
-            .classed("is-positive", (d) =>
-              d.type === "end" ? d.value > 0 : d.type === "plus"
-            )
-            .classed("is-negative", (d) =>
-              d.type === "end" ? d.value < 0 : d.type === "minus"
-            )
-            .classed("is-net-income", (d) => d.type === "end")
+            .classed("is-summary", CLASSED.IS_SUMMARY)
+            .classed("is-net-income", CLASSED.IS_NET_INCOME)
             .attr("transform", (d, i) => `translate(0,${this.y(d, i)})`)
             .attr("fill-opacity", 0)
             .call((text) =>
@@ -52,6 +46,8 @@ class CashFlowItems {
             exit.transition(t).attr("fill-opacity", 0).remove()
           )
       )
+      .classed("is-positive", CLASSED.IS_POSITIVE)
+      .classed("is-negative", CLASSED.IS_NEGATIVE)
       .html(this.itemText);
 
     item

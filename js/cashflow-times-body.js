@@ -80,7 +80,9 @@ class CashflowTimesBody {
           )
       )
       .classed("is-net-income", (d) => d.type === "end")
-      .text((d) => FORMAT.VALUE(d.value))
+      .text((d) =>
+        d.type === "end" ? FORMAT.SIGNED_VALUE(d.value) : FORMAT.VALUE(d.value)
+      )
       .transition(t)
       .attr("fill-opacity", 1)
       .attr("transform", (d, i) => `translate(0,${this.y(d, i)})`);

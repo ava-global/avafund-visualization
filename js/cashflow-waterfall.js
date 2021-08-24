@@ -71,8 +71,11 @@ class CashflowWaterfall {
   }
 
   renderXAxis(t) {
-    if (!this.gX.attr("transform"))
+    if (!this.gX.attr("transform")) {
       this.gX.attr("transform", `translate(0,${this.xAxisY})`);
+      this.gXBackground.attr("transform", `translate(0,${this.xAxisY})`);
+    }
+
     this.gX
       .transition(t)
       .attr("transform", `translate(0,${this.xAxisY})`)
@@ -80,15 +83,35 @@ class CashflowWaterfall {
     this.gX
       .selectAll(".tick line")
       .filter((d) => d === 0)
-      .attr("y1", -this.xAxisY);
-    this.gXBackground.transition(t).call(
-      d3
-        .axisBottom(this.x)
-        .ticks(4)
-        .tickSize(this.xAxisY)
-        .tickFormat(() => "")
-    );
-    this.gXBackground.select(".domain").remove();
+      .attr(
+        "y1",
+        -(
+          this.xAxisY -
+          DIMS.ROW_HEIGHT / 2 +
+          DIMS.WATERFALL_ARROW_STROKE_WIDTH / 2
+        )
+      );
+    this.gXBackground
+      .transition(t)
+      .attr("transform", `translate(0,${this.xAxisY})`)
+      .call(
+        d3
+          .axisBottom(this.x)
+          .ticks(4)
+          .tickFormat(() => "")
+      );
+    this.gXBackground
+      .selectAll(".tick line")
+      .attr(
+        "y1",
+        -(
+          this.xAxisY -
+          DIMS.ROW_HEIGHT / 2 +
+          DIMS.WATERFALL_ARROW_STROKE_WIDTH / 2
+        )
+      )
+      .select(".domain")
+      .remove();
   }
 
   renderArrows(t) {
@@ -103,17 +126,17 @@ class CashflowWaterfall {
           .append("line")
           .attr("class", "waterfall-arrow")
           .attr("stroke-width", DIMS.WATERFALL_ARROW_STROKE_WIDTH)
-          .classed("is-positive", (d) => d.type === "plus")
-          .classed("is-negative", (d) => d.type === "minus")
-          .attr("marker-end", (d) =>
-            d.type === "plus"
-              ? "url(#arrow-marker-positive)"
-              : "url(#arrow-marker-negative)"
-          )
           .attr("transform", (d) => `translate(0,${this.y(d, d.i)})`)
           .attr("x1", this.x(0))
           .attr("x2", this.x(0))
       )
+      .classed("is-positive", CLASSED.IS_POSITIVE)
+      .classed("is-negative", CLASSED.IS_NEGATIVE)
+      .attr("marker-end", function () {
+        return d3.select(this).classed("is-positive")
+          ? "url(#arrow-marker-positive)"
+          : "url(#arrow-marker-negative)";
+      })
       .transition(t)
       .attr("transform", (d) => `translate(0,${this.y(d, d.i)})`)
       .attr("x1", (d) => this.x(d.x1))
@@ -184,8 +207,8 @@ class CashflowWaterfall {
           .attr("width", 0)
           .attr("transform", (d) => `translate(0,${this.y(d, d.i)})`)
       )
-      .classed("is-positive", (d) => d.value >= 0)
-      .classed("is-negative", (d) => d.value < 0)
+      .classed("is-positive", CLASSED.IS_POSITIVE)
+      .classed("is-negative", CLASSED.IS_NEGATIVE)
       .transition(t)
       .attr("x", (d) => Math.min(this.x(0), this.x(d.x2)))
       .attr("width", (d) => Math.abs(this.x(0) - this.x(d.x2)))
@@ -204,13 +227,13 @@ class CashflowWaterfall {
           .attr("x2", this.x(0))
           .attr("y2", (d) => this.xAxisY - this.y(d, d.i) - 4)
       )
-      .classed("is-positive", (d) => d.value >= 0)
-      .classed("is-negative", (d) => d.value < 0)
-      .attr("marker-end", (d) =>
-        d.value >= 0
+      .classed("is-positive", CLASSED.IS_POSITIVE)
+      .classed("is-negative", CLASSED.IS_NEGATIVE)
+      .attr("marker-end", function () {
+        return d3.select(this).classed("is-positive")
           ? "url(#arrow-marker-positive)"
-          : "url(#arrow-marker-negative)"
-      )
+          : "url(#arrow-marker-negative)";
+      })
       .transition(t)
       .attr("transform", (d) => `translate(0,${this.y(d, d.i)})`)
       .attr("x1", (d) => this.x(d.x2))
