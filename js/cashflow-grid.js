@@ -20,12 +20,15 @@ class CashflowGrid {
 
   init() {
     this.dispatch = d3
-      .dispatch("timechange", "itemchange")
+      .dispatch("timechange", "itemchange", "legendhide")
       .on("timechange", (time) => {
         this.updateTime(time);
       })
       .on("itemchange", ({ id, toExpand }) => {
         this.updateItem({ id, toExpand });
+      })
+      .on("legendhide", () => {
+        this.el.dispatchEvent(new Event("legendhide"));
       });
 
     this.container = d3.select(this.el);
@@ -72,6 +75,13 @@ class CashflowGrid {
       isGrowthVisible: this.isGrowthVisible,
     });
 
+    // Legend
+    this.legend = new CashflowWaterfallLegend({
+      el: this.container.select(".waterfall-legend").node(),
+      isLegendVisible: this.isLegendVisible,
+      dispatch: this.dispatch,
+    });
+
     this.wrangleData();
     this.render();
   }
@@ -95,15 +105,25 @@ class CashflowGrid {
     this.name = this.accessor.symbolName(this.annualData);
     this.description = this.accessor.symbolDescription(data);
 
-    this.values = this.accessor.values(data).map((d) => {
+    this.values = this.accessor.values(data).map((d, i) => {
       const time = this.accessor.time(d);
-      const items = this.accessor.items(d).map((e) => ({
+      let prevItems;
+      if (i > 0) {
+        prevItems = this.accessor.items(this.accessor.values(data)[i - 1]);
+      }
+      const items = this.accessor.items(d).map((e, j) => ({
         id: this.accessor.id(e),
         parentId: this.accessor.parentId(e),
         name: this.accessor.name(e),
         value: this.accessor.value(e),
         type: this.accessor.type(e),
-        growth: (Math.random() - 0.5) * 2,
+        growth: (() => {
+          if (i === 0) return null;
+          const present = this.accessor.value(e);
+          const past = this.accessor.value(prevItems[j]);
+          if (present === null || past === null) return null;
+          return (present - past) / Math.abs(past);
+        })(),
       }));
       return {
         time,
@@ -139,6 +159,7 @@ class CashflowGrid {
 
     this.timesHeader.updateData(this.times);
     this.timesBody.updateData(this.values);
+    this.chartBody.updateData(this.values);
 
     this.dispatch.call("timechange", null, this.times[this.times.length - 1]);
     this.timesHeaderArea.node().scrollLeft =
@@ -151,9 +172,7 @@ class CashflowGrid {
     this.time = time;
     this.timesHeader.updateTime(time);
     this.timesBody.updateTime(time);
-    this.chartBody.updateData(
-      this.values.find((v) => v.time === time).visibleItems
-    );
+    this.chartBody.updateTime(time);
   }
 
   updateItem({ id, toExpand }) {
@@ -171,9 +190,7 @@ class CashflowGrid {
     });
 
     this.timesBody.updateData(this.values);
-    this.chartBody.updateData(
-      this.values.find((v) => v.time === this.time).visibleItems
-    );
+    this.chartBody.updateData(this.values);
   }
 
   updateDataType(isAnnualData) {
@@ -182,6 +199,7 @@ class CashflowGrid {
     this.timesHeader.updateDataType(isAnnualData);
     this.timesHeader.updateData(this.times);
     this.timesBody.updateData(this.values);
+    this.chartBody.updateData(this.values);
 
     this.dispatch.call("timechange", null, this.times[this.times.length - 1]);
 
@@ -194,10 +212,12 @@ class CashflowGrid {
   updateChartType(isWaterfallChart) {
     this.isWaterfallChart = isWaterfallChart;
     this.timesBody.updateChartType(isWaterfallChart);
+    this.chartBody.updateChartType(isWaterfallChart);
   }
 
   updateLegendVisibility(isLegendVisible) {
     this.isLegendVisible = isLegendVisible;
+    this.legend.updateVisibility(isLegendVisible);
   }
 
   updateGrowthVisibility(isGrowthVisible) {

@@ -15,6 +15,9 @@ const DIMS = {
   ITEM_NAME_PADDING: 16,
   WATERFALL_CHART_WIDTH: 210,
   LINE_CHART_WIDTH: 60,
+  LINE_CHART_HEIGHT: 14,
+  LINE_CHART_DOT_RADIUS: 1.25,
+  LINE_CHART_STROKE_WIDTH: 1,
   CHART_PADDING: 8,
   CURRENT_VALUE_WIDTH: 52,
   CURRENT_VALUE_PADDING: 20,
@@ -32,11 +35,11 @@ const FORMAT = {
 const CLASSED = {
   IS_POSITIVE: (d) => {
     if (d.type === "end") {
-      return d.value >= 0;
+      return d.value > 0;
     } else if (d.type === "plus") {
-      return d.value >= 0;
+      return d.value > 0;
     } else if (d.type === "minus") {
-      return d.value <= 0;
+      return d.value < 0;
     }
   },
   IS_NEGATIVE: (d) => {

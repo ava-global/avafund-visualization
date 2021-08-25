@@ -26,11 +26,11 @@
           <label for="data-type">Annual</label>
         </div>
         <div>
-          <input type="checkbox" id="chart-type" checked disabled />
+          <input type="checkbox" id="chart-type" />
           <label for="chart-type">Waterfall</label>
         </div>
         <div>
-          <input type="checkbox" id="legend-visibility" disabled />
+          <input type="checkbox" id="legend-visibility" />
           <label for="legend-visibility">Legend</label>
         </div>
         <div>
@@ -52,6 +52,14 @@
         <svg class="times-body-svg"></svg>
       </div>
       <div class="chart-times-divider"></div>
+      <div class="backdrop waterfall-legend">
+        <div class="backdrop-foreground">
+          <div class="waterfall-legend-body">
+            <svg class="waterfall-legend-body-svg"></svg>
+          </div>
+          <button class="btn-close"></button>
+        </div>
+      </div>
     </div>
     <!-- JS -->
     <script src="https://d3js.org/d3.v7.min.js"></script>
@@ -60,6 +68,8 @@
     <script src="js/cashflow-hierarchy.js"></script>
     <script src="js/cashflow-items.js"></script>
     <script src="js/cashflow-waterfall.js"></script>
+    <script src="js/cashflow-waterfall-legend.js"></script>
+    <script src="js/cashflow-line-chart.js"></script>
     <script src="js/cashflow-values.js"></script>
     <script src="js/cashflow-times-header.js"></script>
     <script src="js/cashflow-times-body.js"></script>

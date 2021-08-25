@@ -7,6 +7,7 @@ class CashflowChartBody {
   }
 
   init() {
+    this.timeData = [];
     this.svg = d3.select(this.el);
     this.gBackgrounds = this.svg.append("g").attr("class", "chart-backgrounds");
     this.gItems = this.svg.append("g").attr("class", "chart-items");
@@ -33,10 +34,13 @@ class CashflowChartBody {
     this.waterfallChart = new CashflowWaterfall({
       el: this.gWaterfall.node(),
     });
-    this.chart = this.isWaterfallChart ? this.waterfallChart : "";
+    this.lineChart = new CashFlowLineChart({
+      el: this.gLine.node(),
+    });
     this.cashflowValues = new CashflowValues({
       el: this.gValues.node(),
     });
+    this.updateChartType(this.isWaterfallChart);
   }
 
   wrangleData() {
@@ -50,7 +54,7 @@ class CashflowChartBody {
       DIMS.CURRENT_VALUE_WIDTH +
       DIMS.CURRENT_VALUE_PADDING;
     this.height =
-      DIMS.ROW_HEIGHT * (this.data.length - 1) +
+      DIMS.ROW_HEIGHT * (this.timeData.length - 1) +
       DIMS.NET_ROW_HEIGHT +
       (this.isWaterfallChart ? DIMS.NET_ROW_WATERFALL_EXTRA_HEIGHT : 0);
     if (!this.svg.attr("height"))
@@ -67,7 +71,7 @@ class CashflowChartBody {
 
     this.gBackgrounds
       .selectAll(".background-rect")
-      .data(this.data, (d) => d.name)
+      .data(this.timeData, (d) => d.name)
       .join(
         (enter) =>
           enter
@@ -99,16 +103,37 @@ class CashflowChartBody {
 
   updateChartType(isWaterfallChart) {
     this.isWaterfallChart = isWaterfallChart;
+    this.gWaterfall.style("display", this.isWaterfallChart ? null : "none");
+    this.gLine.style("display", this.isWaterfallChart ? "none" : null);
     this.wrangleData();
     this.render();
   }
 
-  updateData(data) {
-    this.data = data;
+  updateTime(time) {
+    this.time = time;
+    this.lineChart.updateTime(this.time);
+    if (!this.data) return;
+    const found = this.data.find((v) => v.time === this.time);
+    if (!found) return;
+    this.timeData = found.visibleItems;
     this.wrangleData();
     this.render();
-    this.cashflowItems.updateData(this.data);
-    this.cashflowValues.updateData(this.data);
-    this.chart.updateData(this.data);
+    this.cashflowItems.updateData(this.timeData);
+    this.cashflowValues.updateData(this.timeData);
+    this.waterfallChart.updateData(this.timeData);
+  }
+
+  updateData(data) {
+    this.data = data;
+    this.lineChart.updateData(this.data);
+    if (!this.time) return;
+    const found = this.data.find((v) => v.time === this.time);
+    if (!found) return;
+    this.timeData = found.visibleItems;
+    this.wrangleData();
+    this.render();
+    this.cashflowItems.updateData(this.timeData);
+    this.cashflowValues.updateData(this.timeData);
+    this.waterfallChart.updateData(this.timeData);
   }
 }
