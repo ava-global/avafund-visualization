@@ -749,7 +749,7 @@
           "parentId": null,
           "name": "Other Non-Operating Inc. (Exp)",
           "value": null,
-          "type": "minus"
+          "type": null
         },
         {
           "id": 14,
@@ -777,7 +777,7 @@
           "parentId": null,
           "name": "Income Tax Expense",
           "value": null,
-          "type": "minus"
+          "type": null
         },
         {
           "id": 18,
