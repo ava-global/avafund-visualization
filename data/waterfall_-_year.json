@@ -122,7 +122,7 @@
           "parentId": null,
           "name": "Income Tax Expense",
           "value": null,
-          "type": "minus"
+          "type": null
         },
         {
           "id": 18,
@@ -253,7 +253,7 @@
           "parentId": null,
           "name": "Income Tax Expense",
           "value": null,
-          "type": "minus"
+          "type": null
         },
         {
           "id": 18,
