@@ -745,10 +745,17 @@
           "type": "minus"
         },
         {
+          "id": 13,
+          "parentId": null,
+          "name": "Other Non-Operating Inc. (Exp)",
+          "value": null,
+          "type": "minus"
+        },
+        {
           "id": 14,
           "parentId": null,
           "name": "EBT Excl. Unusual Items",
-          "value": -100000,
+          "value": -50000,
           "type": "summary"
         },
         {
@@ -762,14 +769,21 @@
           "id": 16,
           "parentId": null,
           "name": "EBT Incl. Unusual Items",
-          "value": -30000,
+          "value": 20000,
           "type": "summary"
+        },
+        {
+          "id": 17,
+          "parentId": null,
+          "name": "Income Tax Expense",
+          "value": null,
+          "type": "minus"
         },
         {
           "id": 18,
           "parentId": null,
           "name": "Net Income",
-          "value": -30000,
+          "value": 15000,
           "type": "end"
         }
       ]
