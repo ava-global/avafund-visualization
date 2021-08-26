@@ -755,7 +755,7 @@
           "id": 14,
           "parentId": null,
           "name": "EBT Excl. Unusual Items",
-          "value": -50000,
+          "value": -100000,
           "type": "summary"
         },
         {
@@ -769,7 +769,7 @@
           "id": 16,
           "parentId": null,
           "name": "EBT Incl. Unusual Items",
-          "value": 20000,
+          "value": -30000,
           "type": "summary"
         },
         {
@@ -783,7 +783,7 @@
           "id": 18,
           "parentId": null,
           "name": "Net Income",
-          "value": 15000,
+          "value": -30000,
           "type": "end"
         }
       ]
