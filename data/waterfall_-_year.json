@@ -3,15 +3,8 @@
   "description": "in millions of USD",
   "itemPerPeriod": [
     {
-      "period":2016,
+      "period": 2016,
       "items": [
-        {
-          "id": 1,
-          "parentId": null,
-          "name": "Revenue",
-          "value": 500000,
-          "type": "plus"
-        },
         {
           "id": 2,
           "parentId": null,
@@ -134,7 +127,131 @@
       ]
     },
     {
-      "period":2017,
+      "period": 2017,
+      "items": [
+        {
+          "id": 2,
+          "parentId": null,
+          "name": "Cost of Goods Sold",
+          "value": 10,
+          "type": "minus"
+        },
+        {
+          "id": 3,
+          "parentId": null,
+          "name": "Gross Profit",
+          "value": 40,
+          "type": "summary"
+        },
+        {
+          "id": 4,
+          "parentId": null,
+          "name": "Other Operating Exp., Total",
+          "value": 5,
+          "type": "minus"
+        },
+        {
+          "id": 5,
+          "parentId": null,
+          "name": "Operating Income",
+          "value": 35,
+          "type": "summary"
+        },
+        {
+          "id": 6,
+          "parentId": null,
+          "name": "Net Interest Exp.",
+          "value": 3,
+          "type": "plus"
+        },
+        {
+          "id": 7,
+          "parentId": 6,
+          "name": "Interest Exp.",
+          "value": 10120,
+          "type": "minus"
+        },
+        {
+          "id": 8,
+          "parentId": 6,
+          "name": "Interest and Invest. Income",
+          "value": 72970,
+          "type": "plus"
+        },
+        {
+          "id": 9,
+          "parentId": 8,
+          "name": "A1",
+          "value": 110493,
+          "type": "plus"
+        },
+        {
+          "id": 10,
+          "parentId": 8,
+          "name": "A2",
+          "value": 53392,
+          "type": "plus"
+        },
+        {
+          "id": 11,
+          "parentId": 8,
+          "name": "A3",
+          "value": 76030,
+          "type": "minus"
+        },
+        {
+          "id": 12,
+          "parentId": null,
+          "name": "Currency Exchange Gains (Loss)",
+          "value": 4,
+          "type": "plus"
+        },
+        {
+          "id": 13,
+          "parentId": null,
+          "name": "Other Non-Operating Inc. (Exp)",
+          "value": 1,
+          "type": "minus"
+        },
+        {
+          "id": 14,
+          "parentId": null,
+          "name": "EBT Excl. Unusual Items",
+          "value": 41,
+          "type": "summary"
+        },
+        {
+          "id": 15,
+          "parentId": null,
+          "name": "Gain (Loss) On sale Of Invest.",
+          "value": 3,
+          "type": "plus"
+        },
+        {
+          "id": 16,
+          "parentId": null,
+          "name": "EBT Incl. Unusual Items",
+          "value": 44,
+          "type": "summary"
+        },
+        {
+          "id": 17,
+          "parentId": null,
+          "name": "Income Tax Expense",
+          "value": 14,
+          "type": "minus"
+        },
+        {
+          "id": 18,
+          "parentId": null,
+          "name": "Net Income",
+          "value": 30,
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "period": 2018,
       "items": [
         {
           "id": 1,
@@ -265,138 +382,7 @@
       ]
     },
     {
-      "period":2018,
-      "items": [
-        {
-          "id": 1,
-          "parentId": null,
-          "name": "Revenue",
-          "value": 50,
-          "type": "plus"
-        },
-        {
-          "id": 2,
-          "parentId": null,
-          "name": "Cost of Goods Sold",
-          "value": 10,
-          "type": "minus"
-        },
-        {
-          "id": 3,
-          "parentId": null,
-          "name": "Gross Profit",
-          "value": 40,
-          "type": "summary"
-        },
-        {
-          "id": 4,
-          "parentId": null,
-          "name": "Other Operating Exp., Total",
-          "value": 5,
-          "type": "minus"
-        },
-        {
-          "id": 5,
-          "parentId": null,
-          "name": "Operating Income",
-          "value": 35,
-          "type": "summary"
-        },
-        {
-          "id": 6,
-          "parentId": null,
-          "name": "Net Interest Exp.",
-          "value": 3,
-          "type": "plus"
-        },
-        {
-          "id": 7,
-          "parentId": 6,
-          "name": "Interest Exp.",
-          "value": 10120,
-          "type": "minus"
-        },
-        {
-          "id": 8,
-          "parentId": 6,
-          "name": "Interest and Invest. Income",
-          "value": 72970,
-          "type": "plus"
-        },
-        {
-          "id": 9,
-          "parentId": 8,
-          "name": "A1",
-          "value": 110493,
-          "type": "plus"
-        },
-        {
-          "id": 10,
-          "parentId": 8,
-          "name": "A2",
-          "value": 53392,
-          "type": "plus"
-        },
-        {
-          "id": 11,
-          "parentId": 8,
-          "name": "A3",
-          "value": 76030,
-          "type": "minus"
-        },
-        {
-          "id": 12,
-          "parentId": null,
-          "name": "Currency Exchange Gains (Loss)",
-          "value": 4,
-          "type": "plus"
-        },
-        {
-          "id": 13,
-          "parentId": null,
-          "name": "Other Non-Operating Inc. (Exp)",
-          "value": 1,
-          "type": "minus"
-        },
-        {
-          "id": 14,
-          "parentId": null,
-          "name": "EBT Excl. Unusual Items",
-          "value": 41,
-          "type": "summary"
-        },
-        {
-          "id": 15,
-          "parentId": null,
-          "name": "Gain (Loss) On sale Of Invest.",
-          "value": 3,
-          "type": "plus"
-        },
-        {
-          "id": 16,
-          "parentId": null,
-          "name": "EBT Incl. Unusual Items",
-          "value": 44,
-          "type": "summary"
-        },
-        {
-          "id": 17,
-          "parentId": null,
-          "name": "Income Tax Expense",
-          "value": 14,
-          "type": "minus"
-        },
-        {
-          "id": 18,
-          "parentId": null,
-          "name": "Net Income",
-          "value": 30,
-          "type": "end"
-        }
-      ]
-    },
-    {
-      "period":2019,
+      "period": 2019,
       "items": [
         {
           "id": 1,
@@ -527,9 +513,9 @@
       ]
     },
     {
-      "period":2020,
+      "period": 2020,
       "items": [
-{
+        {
           "id": 1,
           "parentId": null,
           "name": "Revenue",
@@ -658,9 +644,9 @@
       ]
     },
     {
-      "period":2021,
+      "period": 2021,
       "items": [
-{
+        {
           "id": 1,
           "parentId": null,
           "name": "Revenue",
@@ -671,119 +657,119 @@
           "id": 2,
           "parentId": null,
           "name": "Cost of Goods Sold",
-          "value": null,
+          "value": 74515,
           "type": "minus"
         },
         {
           "id": 3,
           "parentId": null,
           "name": "Gross Profit",
-          "value": 104956,
+          "value": 200000,
           "type": "summary"
         },
         {
           "id": 4,
           "parentId": null,
           "name": "Other Operating Exp., Total",
-          "value": 140376,
+          "value": -100000,
           "type": "minus"
         },
         {
           "id": 5,
           "parentId": null,
           "name": "Operating Income",
-          "value": -35420,
+          "value": 100000,
           "type": "summary"
         },
         {
           "id": 6,
           "parentId": null,
           "name": "Net Interest Exp.",
-          "value": 62850,
+          "value": 50000,
           "type": "plus"
         },
         {
           "id": 7,
           "parentId": 6,
           "name": "Interest Exp.",
-          "value": 10120,
-          "type": "minus"
+          "value": 50000,
+          "type": "plus"
         },
         {
           "id": 8,
           "parentId": 6,
           "name": "Interest and Invest. Income",
-          "value": 72970,
-          "type": "plus"
+          "value": 50000,
+          "type": "minus"
         },
         {
           "id": 9,
           "parentId": 8,
           "name": "A1",
-          "value": 110493,
+          "value": 100000,
           "type": "plus"
         },
         {
           "id": 10,
           "parentId": 8,
           "name": "A2",
-          "value": 53392,
+          "value": 150000,
           "type": "plus"
         },
         {
           "id": 11,
           "parentId": 8,
           "name": "A3",
-          "value": 90915,
-          "type": "minus"
+          "value": 50000,
+          "type": "plus"
         },
         {
           "id": 12,
           "parentId": null,
           "name": "Currency Exchange Gains (Loss)",
-          "value": 37480,
-          "type": "plus"
+          "value": 100000,
+          "type": "minus"
         },
         {
           "id": 13,
           "parentId": null,
           "name": "Other Non-Operating Inc. (Exp)",
-          "value": 773,
+          "value": 250000,
           "type": "minus"
         },
         {
           "id": 14,
           "parentId": null,
           "name": "EBT Excl. Unusual Items",
-          "value": 64137,
+          "value": -50000,
           "type": "summary"
         },
         {
           "id": 15,
           "parentId": null,
           "name": "Gain (Loss) On sale Of Invest.",
-          "value": 82,
+          "value": 70000,
           "type": "plus"
         },
         {
           "id": 16,
           "parentId": null,
           "name": "EBT Incl. Unusual Items",
-          "value": 64219,
+          "value": 20000,
           "type": "summary"
         },
         {
           "id": 17,
           "parentId": null,
           "name": "Income Tax Expense",
-          "value": 110981,
+          "value": 5000,
           "type": "minus"
         },
         {
           "id": 18,
           "parentId": null,
           "name": "Net Income",
-          "value": -46762,
+          "value": 15000,
           "type": "end"
         }
       ]
