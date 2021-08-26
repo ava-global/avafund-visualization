@@ -118,6 +118,13 @@
           "type": "summary"
         },
         {
+          "id": 17,
+          "parentId": null,
+          "name": "Income Tax Expense",
+          "value": 140000,
+          "type": "minus"
+        },
+        {
           "id": 18,
           "parentId": null,
           "name": "Net Income",
@@ -240,6 +247,13 @@
           "name": "EBT Incl. Unusual Items",
           "value": 44,
           "type": "summary"
+        },
+        {
+          "id": 17,
+          "parentId": null,
+          "name": "Income Tax Expense",
+          "value": 14,
+          "type": "minus"
         },
         {
           "id": 18,
