@@ -15,7 +15,7 @@ class CashflowWaterfallLegend {
     this.svg = this.container
       .select(".waterfall-legend-body-svg")
       .attr("width", 140)
-      .attr("height", 100);
+      .attr("height", 108);
     this.render();
     this.updateVisibility(this.isLegendVisible);
   }

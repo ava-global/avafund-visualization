@@ -151,6 +151,18 @@ class CashflowGrid {
         this.hierarchy.visibleItems.has(d.id)
       );
     });
+
+    // Get abs max net income to determine the CURRENT_VALUE_WIDTH
+    DIMS.CURRENT_VALUE_WIDTH = (() => {
+      const value = d3.max(this.values, (d) =>
+        Math.abs(d.visibleItems.find((e) => e.type === "end").value)
+      );
+      const charCount = FORMAT.SIGNED_VALUE(value).length;
+      return d3.max([
+        charCount * DIMS.CURRENT_VALUE_CHAR_WIDTH,
+        DIMS.CURRENT_VALUE_MIN_WIDTH,
+      ]);
+    })();
   }
 
   render() {

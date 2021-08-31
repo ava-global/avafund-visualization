@@ -50,6 +50,7 @@ body {
 
 /* Layout */
 .cashflow-grid {
+  font-variant-numeric: tabular-nums;
   display: grid;
   grid-template:
     "toolbar      toolbar toolbar     " 48px

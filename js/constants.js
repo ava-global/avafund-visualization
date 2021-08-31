@@ -3,10 +3,12 @@ const DIMS = {
   NET_ROW_HEIGHT: 24,
   NET_ROW_WATERFALL_EXTRA_HEIGHT: 24,
   TIME_Y_CENTER: 26,
-  TIME_WIDTH: 60,
+  get TIME_WIDTH() {
+    return this.CURRENT_VALUE_WIDTH;
+  },
   TIME_PADDING: 8,
   TIME_BOX_ANNUAL_WIDTH: 40,
-  TIME_BOX_QUARTER_WIDTH: 60,
+  TIME_BOX_QUARTER_WIDTH: 64,
   TIME_BOX_HEIGHT: 20,
   TIME_BOX_CORNER_RADIUS: 4,
   GROWTH_WIDTH: 32,
@@ -19,7 +21,9 @@ const DIMS = {
   LINE_CHART_DOT_RADIUS: 1.25,
   LINE_CHART_STROKE_WIDTH: 1,
   CHART_PADDING: 8,
-  CURRENT_VALUE_WIDTH: 52,
+  CURRENT_VALUE_CHAR_WIDTH: 8,
+  CURRENT_VALUE_WIDTH: null, // Dynamically determined by largest net income values
+  CURRENT_VALUE_MIN_WIDTH: 60,
   CURRENT_VALUE_PADDING: 20,
   WATERFALL_X_AXIS_OFFSET: 16,
   WATERFALL_ARROW_STROKE_WIDTH: 2,
@@ -29,7 +33,7 @@ const DIMS = {
 const FORMAT = {
   VALUE: (d) => (d === null ? "-" : d3.format(",")(d)),
   SIGNED_VALUE: (d) => (d === null ? "-" : d3.format("+,")(d)),
-  GROWTH: (d) => (d === null ? "" : d3.format("+.1~%")(d)),
+  GROWTH: (d) => (d === null || !isFinite(d) ? "" : d3.format("+.1~%")(d)),
 };
 
 const CLASSED = {

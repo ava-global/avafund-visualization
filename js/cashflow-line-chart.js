@@ -25,7 +25,7 @@ class CashFlowLineChart {
       this.rowData.map((d) => {
         const z = d3
           .scaleLinear()
-          .domain(d3.extent(d, (e) => e.value))
+          .domain([d.min, d.max])
           .range([DIMS.LINE_CHART_HEIGHT / 2, -DIMS.LINE_CHART_HEIGHT / 2]);
         return [d.id, z];
       })
@@ -107,25 +107,44 @@ class CashFlowLineChart {
     // Up clip
     row
       .select(".up-clip rect")
-      .attr("y", -DIMS.LINE_CHART_HEIGHT / 2 - DIMS.LINE_CHART_DOT_RADIUS)
-      .attr(
-        "height",
-        (d) =>
-          this.z.get(d.id)(0) -
-          (-DIMS.LINE_CHART_HEIGHT / 2 - DIMS.LINE_CHART_DOT_RADIUS)
-      );
+      .attr("y", -DIMS.LINE_CHART_HEIGHT / 2 - DIMS.LINE_CHART_STROKE_WIDTH / 2)
+      .attr("height", (d) => {
+        const z = this.z.get(d.id);
+        if (d.max <= 0) {
+          return 0;
+        } else if (d.max > 0 && d.min < 0) {
+          return z(0) - z.range()[1] + DIMS.LINE_CHART_STROKE_WIDTH;
+        } else if (d.min >= 0) {
+          return DIMS.LINE_CHART_HEIGHT + DIMS.LINE_CHART_STROKE_WIDTH;
+        }
+      });
 
     // Down clip
     row
       .select(".down-clip rect")
-      .attr("y", (d) => this.z.get(d.id)(0))
-      .attr(
-        "height",
-        (d) =>
-          DIMS.LINE_CHART_HEIGHT / 2 +
-          DIMS.LINE_CHART_DOT_RADIUS -
-          this.z.get(d.id)(0)
-      );
+      .attr("y", (d) => {
+        const z = this.z.get(d.id);
+        if (d.max <= 0) {
+          return -DIMS.LINE_CHART_HEIGHT / 2 - DIMS.LINE_CHART_STROKE_WIDTH / 2;
+        } else if (d.max > 0 && d.min < 0) {
+          return z(0) + DIMS.LINE_CHART_STROKE_WIDTH / 2;
+        } else if (d.min >= 0) {
+          return DIMS.LINE_CHART_HEIGHT / 2 + DIMS.LINE_CHART_STROKE_WIDTH / 2;
+        }
+      })
+      .attr("height", (d) => {
+        const z = this.z.get(d.id);
+        if (d.max <= 0) {
+          return DIMS.LINE_CHART_HEIGHT + DIMS.LINE_CHART_STROKE_WIDTH;
+        } else if (d.max > 0 && d.min < 0) {
+          return Math.max(
+            z.range()[0] - z(0) - DIMS.LINE_CHART_STROKE_WIDTH,
+            0
+          );
+        } else if (d.min >= 0) {
+          return 0;
+        }
+      });
 
     // Up path
     row
@@ -225,7 +244,10 @@ class CashFlowLineChart {
     row
       .select(".line-dots")
       .selectAll(".line-dot")
-      .data((d) => d)
+      .data(
+        (d) => d,
+        (d) => d.time
+      )
       .join((enter) =>
         enter
           .append("circle")
@@ -234,8 +256,15 @@ class CashFlowLineChart {
       )
       .attr("cx", (d) => this.x(d.time))
       .attr("cy", (d) => this.z.get(d.id)(d.value))
-      .classed("is-positive", CLASSED.IS_POSITIVE)
-      .classed("is-negative", CLASSED.IS_NEGATIVE)
+      .style("display", (d) => (d.value === null ? "none" : null))
+      .classed(
+        "is-positive",
+        (d) => !CLASSED.IS_SUMMARY(d) && CLASSED.IS_POSITIVE(d)
+      )
+      .classed(
+        "is-negative",
+        (d) => !CLASSED.IS_SUMMARY(d) && CLASSED.IS_NEGATIVE(d)
+      )
       .classed("is-selected", (d) => d.time === this.time);
   }
 
@@ -259,6 +288,8 @@ class CashFlowLineChart {
           row.type = item.type;
         }
       }
+      row.min = d3.min(row, (d) => d.value);
+      row.max = d3.max(row, (d) => d.value);
       rows.push(row);
     }
     return rows;

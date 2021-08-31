@@ -70,14 +70,13 @@ class CashflowWaterfall {
     this.renderNetIncome(t);
   }
 
-  renderXAxis(t) {
+  renderXAxis() {
     if (!this.gX.attr("transform")) {
       this.gX.attr("transform", `translate(0,${this.xAxisY})`);
       this.gXBackground.attr("transform", `translate(0,${this.xAxisY})`);
     }
 
     this.gX
-      .transition(t)
       .attr("transform", `translate(0,${this.xAxisY})`)
       .call(d3.axisBottom(this.x).ticks(4));
     this.gX
@@ -91,15 +90,12 @@ class CashflowWaterfall {
           DIMS.WATERFALL_ARROW_STROKE_WIDTH / 2
         )
       );
-    this.gXBackground
-      .transition(t)
-      .attr("transform", `translate(0,${this.xAxisY})`)
-      .call(
-        d3
-          .axisBottom(this.x)
-          .ticks(4)
-          .tickFormat(() => "")
-      );
+    this.gXBackground.attr("transform", `translate(0,${this.xAxisY})`).call(
+      d3
+        .axisBottom(this.x)
+        .ticks(4)
+        .tickFormat(() => "")
+    );
     this.gXBackground
       .selectAll(".tick line")
       .attr(
