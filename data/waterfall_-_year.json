@@ -741,7 +741,7 @@
           "id": 12,
           "parentId": null,
           "name": "Currency Exchange Gains (Loss)",
-          "value": 250000,
+          "value": -250000,
           "type": "minus"
         },
         {
