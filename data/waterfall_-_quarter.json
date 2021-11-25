@@ -6,6 +6,13 @@
       "period":"Q3/2019",
       "items": [
         {
+          "id": 0,
+          "parentId": null,
+          "name": "Cash and Cash Equivalents",
+          "value": 2000,
+          "type": "summary"
+        },
+        {
           "id": 1,
           "parentId": null,
           "name": "Revenue",
@@ -137,6 +144,13 @@
       "period":"Q4/2019",
       "items": [
         {
+          "id": 0,
+          "parentId": null,
+          "name": "Cash and Cash Equivalents",
+          "value": 2000,
+          "type": "summary"
+        },
+        {
           "id": 1,
           "parentId": null,
           "name": "Revenue",
@@ -267,6 +281,13 @@
     {
       "period":"Q4/2019",
       "items": [
+        {
+          "id": 0,
+          "parentId": null,
+          "name": "Cash and Cash Equivalents",
+          "value": 2000,
+          "type": "summary"
+        },
         {
           "id": 1,
           "parentId": null,
@@ -399,6 +420,13 @@
       "period":"Q1/2020",
       "items": [
         {
+          "id": 0,
+          "parentId": null,
+          "name": "Cash and Cash Equivalents",
+          "value": 2000,
+          "type": "summary"
+        },
+        {
           "id": 1,
           "parentId": null,
           "name": "Revenue",
@@ -530,6 +558,13 @@
       "period":"Q2/2020",
       "items": [
         {
+          "id": 0,
+          "parentId": null,
+          "name": "Cash and Cash Equivalents",
+          "value": 2000,
+          "type": "summary"
+        },
+        {
           "id": 1,
           "parentId": null,
           "name": "Revenue",
@@ -660,7 +695,14 @@
     {
       "period":"Q3/2020",
       "items": [
-{
+        {
+          "id": 0,
+          "parentId": null,
+          "name": "Cash and Cash Equivalents",
+          "value": 2000,
+          "type": "summary"
+        },
+        {
           "id": 1,
           "parentId": null,
           "name": "Revenue",
